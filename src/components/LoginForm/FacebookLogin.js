@@ -1,8 +1,52 @@
-import React from 'react';
-const FacebookLogin = () => {
+import React, { useState } from 'react';
+import FacebookLogin from 'react-facebook-login'
+import { Card, Image } from 'react-bootstrap';
+
+const FacebookLog = () => {
+    const [login, setLogin] = useState(false);
+    const [data, setData] = useState({});
+    const [picture, setPicture] = useState('');
+
+    const responseFacebook = (response) => {
+        console.log(response);
+        setData(response);
+        setPicture(response.picture.data.url);
+        if (response.accessToken) {
+            setLogin(true);
+        } else {
+            setLogin(false);
+        }
+    }
+
     return (
-        <p>facebook login</p>
+        <div className="container">
+            <Card style={{ width: '600px' }}>
+                <Card.Header>
+                    {!login &&
+                        <FacebookLogin
+                            appId="472726973683317"
+                            autoLoad={false}
+                            fields="name,email,picture"
+                            scope="public_profile,user_friends"
+                            callback={responseFacebook}
+                            icon="fa-facebook" />
+                    }
+                    {login &&
+                        <Image src={picture} roundedCircle />
+                    }
+                </Card.Header>
+                {login &&
+                    <Card.Body>
+                        <Card.Title>{data.name}</Card.Title>
+                        <Card.Text>
+                            {data.email}
+                        </Card.Text>
+                    </Card.Body>
+                }
+            </Card>
+        </div>
+
     );
 }
 
-export default FacebookLogin;
+export default FacebookLog;

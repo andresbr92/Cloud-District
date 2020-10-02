@@ -1,12 +1,14 @@
 import React from 'react';
-import FacebookLogin from './components/LoginForm/FacebookLogin'
+import FacebookLog from './components/LoginForm/FacebookLogin'
+import GoogleLog from './components/LoginForm/GoogleLogin'
 
 
 function App() {
   return (
     <div className="App">
       <h1> hi</h1>
-      <FacebookLogin />
+      <FacebookLog />
+      <GoogleLog />
     </div>
   );
 }
