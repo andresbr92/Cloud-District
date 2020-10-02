@@ -17,6 +17,9 @@ const FacebookLog = () => {
             setLogin(false);
         }
     }
+    
+    
+    console.log(process.env.REACT_APP_TEST_FACEBOOK);
 
     return (
         <div className="container">
@@ -24,7 +27,7 @@ const FacebookLog = () => {
                 <Card.Header>
                     {!login &&
                         <FacebookLogin
-                            appId="472726973683317"
+                        appId={process.env.REACT_APP_TEST_FACEBOOK}
                             autoLoad={false}
                             fields="name,email,picture"
                             scope="public_profile,user_friends"

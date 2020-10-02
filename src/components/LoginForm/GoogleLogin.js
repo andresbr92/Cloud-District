@@ -24,7 +24,7 @@ const GoogleLog = () => {
     return (
         <div className='container'>
             {!login && <GoogleLogin
-                clientId='369782595415-rss3spvia1vca7jthh9kmn6qglrav1bv.apps.googleusercontent.com'
+                clientId={process.env.REACT_APP_TEST_GOOGLE}
                 buttonText='Continuar con Google'
                 onSuccess={responseGoogle}
                 onFailure={responseGoogle}
